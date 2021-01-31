@@ -35,7 +35,7 @@ const serverlessConfiguration: Serverless = {
     include: [ '../libs/*' ]
   },
   functions: {
-    hello: {
+    getProductById: {
       handler: 'handler.getProductById',
       events: [
         {

@@ -1,18 +1,21 @@
-import { APIGatewayProxyHandler } from 'aws-lambda';
 import 'source-map-support/register';
-import { PostgresDB } from '../../libs/db/postgres.db';
+import { diContainer } from "../../libs/di/inversify.config";
 import { DBInterface } from "../../libs/db/DB.interface";
+import { TYPES } from "../../libs/types";
+import { errorResponse, successResponse, responseInterface } from "../../libs/response-helpers";
 
-export const getProductById: APIGatewayProxyHandler = async (event, _context) => {
-    const { productId = '' } = event.pathParameters;
-    // @ts-ignore
-    const DBInstance: DBInterface = new PostgresDB( process.env );
-    console.log( productId );
-    return {
-        statusCode: 200,
-        body: JSON.stringify({
-            message: 'Go Serverless Webpack (Typescript) v1.0! Your function executed successfully!',
-            input: event,
-        }, null, 2),
-    };
+export const getProductById: (event, _context) => Promise<responseInterface> = async (event, _context) => {
+    try {
+        // @ts-ignore
+        const { productId = '' } = event.pathParameters;
+        const DBInstance = diContainer.get<DBInterface>( TYPES.DB );
+        // @ts-ignore
+        // const DBInstance: DBInterface = new DB( process.env );
+        await DBInstance.connect();
+
+        return successResponse( { message: event } );
+    }
+    catch ( err ) {
+        return errorResponse( err );
+    }
 }

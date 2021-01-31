@@ -18,6 +18,7 @@
   "homepage": "https://github.com/Major98113/aws-local-lambdas#readme",
   "dependencies": {
     "inversify": "^5.0.5",
-    "pg": "^8.5.1"
+    "pg": "^8.5.1",
+    "winston": "^3.3.3"
   }
 }
