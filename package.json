@@ -1,0 +1,23 @@
+{
+  "name": "aws-local-lambdas",
+  "version": "1.0.0",
+  "description": "<p> \r     <strong>For creating new service you should enter next command: </strong>\r     <code>\r         serverless create --template [template name, as example: aws-nodejs] --path [service_name]\r     </code>\r </p>\r <p>\r     <strong>For creating new  on TypeScript you should enter next command: </strong>\r     <code>\r         serverless create --template aws-nodejs-typescript --path [service_name]\r     </code>\r </p>\r <p> \r     <strong>For deploy service you should go to your service folder: cd [your_service_folder_name] and enter next command: </strong>\r     <code>\r         sls deploy\r     </code>\r </p>\r <p>\r     <strong>For testing locally you should install serverless-offline package and enter next command: </strong>\r     <code>\r         sls offline start\r     </code>\r </p>",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Major98113/aws-local-lambdas.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Major98113/aws-local-lambdas/issues"
+  },
+  "homepage": "https://github.com/Major98113/aws-local-lambdas#readme",
+  "dependencies": {
+    "inversify": "^5.0.5",
+    "pg": "^8.5.1"
+  }
+}

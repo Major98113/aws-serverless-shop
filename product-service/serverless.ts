@@ -24,11 +24,11 @@ const serverlessConfiguration: Serverless = {
     },
     environment: {
       AWS_NODEJS_CONNECTION_REUSE_ENABLED: '1',
-      DB_HOST: 'ss',
-      DB_PORT: '',
-      DB_NAME: '',
-      DB_USERNAME: '',
-      DB_PASSWORD: ''
+      DB_HOST: 'ziggy.db.elephantsql.com',
+      DB_PORT: '5432',
+      DB_NAME: 'yqcpikbt',
+      DB_USERNAME: 'yqcpikbt',
+      DB_PASSWORD: 'LcIjch4PLbGFsHJnLlc-NSJwYxWxXAJ2'
     },
   },
   package: {
@@ -36,12 +36,19 @@ const serverlessConfiguration: Serverless = {
   },
   functions: {
     hello: {
-      handler: 'handler.hello',
+      handler: 'handler.getProductById',
       events: [
         {
           http: {
             method: 'get',
-            path: 'hello',
+            path: 'products/{productId}',
+            request: {
+              parameters: {
+                paths: {
+                  productId: true
+                }
+              }
+            }
           }
         }
       ]
