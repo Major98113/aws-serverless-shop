@@ -13,7 +13,9 @@ export const getProductById: (event, _context) => Promise<responseInterface> = a
         // const DBInstance: DBInterface = new DB( process.env );
         await DBInstance.connect();
 
-        return successResponse( { message: event } );
+        const res = await DBInstance.query('select * from products');
+        console.log(res);
+        return successResponse( { message: res } );
     }
     catch ( err ) {
         return errorResponse( err );

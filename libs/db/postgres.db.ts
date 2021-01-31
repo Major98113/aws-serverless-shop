@@ -1,12 +1,18 @@
-import { Client } from 'pg';
-import { injectable } from 'inversify';
+import {Client} from 'pg';
+import {injectable} from 'inversify';
 import 'reflect-metadata';
-import { DBInterface } from "./DB.interface";
+import {DBInterface} from "./DB.interface";
+import {diContainer} from "../di/inversify.config";
+import {LoggerInterface} from "../logger/logger.interface";
+import {TYPES} from "../types";
 
 @injectable()
 class PostgresDB implements DBInterface {
     private readonly client: Client;
-    constructor({ DB_HOST, DB_PORT, DB_NAME, DB_USERNAME, DB_PASSWORD }) {
+    private readonly logger: LoggerInterface;
+
+    constructor() {
+        const { DB_HOST, DB_PORT, DB_NAME, DB_USERNAME, DB_PASSWORD } = process.env;
         const dbOptions = {
             host: DB_HOST,
             port: DB_PORT,
@@ -19,25 +25,28 @@ class PostgresDB implements DBInterface {
             connectionTimeoutMillis: 5000
         };
 
+        this.logger = diContainer.get<LoggerInterface>( TYPES.LOGGER );
         this.client = new Client(dbOptions);
     }
 
     async connect() {
         try {
+            this.logger.logDBRequest("Start connecting to DB");
             await this.client.connect();
+            this.logger.logDBRequest("Connection to DB successfully finished");
         }
         catch ( err ){
-
+            this.logger.logError( err.message || "DB connection error" + JSON.stringify( err ) )
         }
     }
 
     async query( queryStr: string ) {
         try {
-            const response: any = await this.client.query( queryStr );
-            return response;
+            this.logger.logDBRequest("DB query: " + queryStr );
+            return await this.client.query(queryStr);
         }
         catch ( err) {
-
+            this.logger.logError( err.message || "DB query error" + JSON.stringify( err ) )
         }
     }
 }

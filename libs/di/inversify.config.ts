@@ -8,7 +8,7 @@ import { WinstonLogger } from "../logger/winston.logger";
 
 const diContainer = new Container();
 // @ts-ignore
-diContainer.bind<DBInterface>(TYPES.DB).toConstantValue(new PostgresDB(process.env));
+diContainer.bind<DBInterface>(TYPES.DB).to(PostgresDB);
 diContainer.bind<LoggerInterface>(TYPES.LOGGER).to(WinstonLogger);
 
 export { diContainer };
