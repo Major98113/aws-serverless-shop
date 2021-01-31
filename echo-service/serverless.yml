@@ -1,0 +1,23 @@
+service: echo-service
+frameworkVersion: '2'
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+
+functions:
+  hello:
+    handler: handler.getEventPayload
+    events:
+      - http:
+          path: products
+          method: get
+
+plugins:
+  - serverless-offline
+  - serverless-webpack
+
+custom:
+  webpack:
+    webpackConfig: 'config/webpack.config.js'
+    includeModules: true
