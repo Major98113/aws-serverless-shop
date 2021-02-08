@@ -2,10 +2,7 @@ import type { Serverless } from 'serverless/aws';
 
 const serverlessConfiguration: Serverless = {
   service: {
-    name: 'queue-service',
-    // app and org for use with dashboard.serverless.com
-    // app: your-app-name,
-    // org: your-org-name,
+    name: 'queue-service'
   },
   frameworkVersion: '2',
   custom: {
@@ -14,7 +11,6 @@ const serverlessConfiguration: Serverless = {
       includeModules: true
     }
   },
-  // Add the serverless-webpack plugin
   plugins: ['serverless-webpack'],
   provider: {
     name: 'aws',
@@ -41,13 +37,30 @@ const serverlessConfiguration: Serverless = {
     ]
   },
   functions: {
-    hello: {
-      handler: 'handler.hello',
+    pushDataToQueue: {
+      handler: 'handler.pushDataToQueue',
+      memorySize: 1024,
+      timeout: 60,
       events: [
         {
           http: {
             method: 'get',
-            path: 'hello',
+            path: 'push-message',
+          }
+        }
+      ]
+    },
+    getDataFromQueue: {
+      handler: 'handler.getDataFromQueue',
+      memorySize: 1024,
+      timeout: 60,
+      events: [
+        {
+          sqs: {
+            batchSize: 5,
+            arn: {
+              "Fn::GetAtt": [ "FirstQueue", "Arn" ]
+            }
           }
         }
       ]
