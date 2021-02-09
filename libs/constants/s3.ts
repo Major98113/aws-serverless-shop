@@ -1,0 +1,1 @@
+const IMPORT_PRODUCTS_BUCKET = "imported-products"

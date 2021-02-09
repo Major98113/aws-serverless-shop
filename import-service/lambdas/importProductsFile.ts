@@ -1,12 +1,13 @@
-import { APIGatewayProxyHandler } from 'aws-lambda';
-import 'source-map-support/register';
+import AWS from "aws-sdk";
+import { errorResponse, successResponse, responseInterface } from "../../libs/response-helpers";
 
-export const importProductsFile: APIGatewayProxyHandler = async (event, _context) => {
-  return {
-    statusCode: 200,
-    body: JSON.stringify({
-      message: 'Go Serverless Webpack (Typescript) v1.0! Your function executed successfully!',
-      input: event,
-    }, null, 2),
-  };
+export const getAllProducts: ( event, _context ) => Promise<responseInterface> = async (event, _context) => {
+    try {
+        const s3 = new AWS.S3({ region: 'us-east-1' });
+        
+        return successResponse( "Success" );
+    } 
+    catch (err) {
+        return errorResponse( err );
+    }
 }
