@@ -54,6 +54,19 @@ const serverlessConfiguration: Serverless = {
           }
         }
       ]
+    },
+    getAllProducts: {
+      handler: 'handler.getAllProducts',
+      memorySize: 128,
+      timeout: 10,
+      events: [
+        {
+          http: {
+            method: 'get',
+            path: 'products'
+          }
+        }
+      ]
     }
   }
 }

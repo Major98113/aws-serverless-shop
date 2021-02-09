@@ -32,7 +32,7 @@ const errorResponse = ( err: Error, statusCode: number = 500 ): responseInterfac
 
 const successResponse = ( body: Object, statusCode: number = 200 ): responseInterface => {
     loggerInstance.logServiceRequest(
-        `Lambda successfully invoked and finished with payload: ${ JSON.stringify( body ) } `
+        `Lambda successfully invoked and finished`
     );
 
     return {
