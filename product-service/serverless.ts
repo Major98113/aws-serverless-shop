@@ -67,6 +67,41 @@ const serverlessConfiguration: Serverless = {
           }
         }
       ]
+    },
+    createProduct: {
+      handler: 'handler.createProduct',
+      memorySize: 128,
+      timeout: 10,
+      events: [
+        {
+          http: {
+            method: 'put',
+            path: 'products',
+            cors: true
+          }
+        }
+      ]
+    },
+    removeProduct: {
+      handler: 'handler.removeProduct',
+      memorySize: 128,
+      timeout: 10,
+      events: [
+        {
+          http: {
+            method: 'delete',
+            path: 'products/{productId}',
+            cors: true,
+            request: {
+              parameters: {
+                paths: {
+                  productId: true
+                }
+              }
+            }
+          }
+        }
+      ]
     }
   }
 }
