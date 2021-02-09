@@ -27,7 +27,7 @@ class ProductsModel implements ProductsModelInterface{
 
     async getProductById( id: string ) {
         try {
-            const { rows: [ product ] } = await this.DB.query(`
+            const response = await this.DB.query(`
                 SELECT products.id, products.title, products.description, products.price, products.logo, stocks.count 
                 FROM products 
                 INNER JOIN stocks ON 
@@ -35,12 +35,18 @@ class ProductsModel implements ProductsModelInterface{
                 AND stocks.product_id = '${ id }';`
             );
 
+            if( response?.rows?.length ) {
+                const { rows: [ product ] } = response;
 
-            return product;
+                return product;
+            }
+            
+            return null;
+
         }
         catch( error ) {
             this.logger.logError( `Method getProductById. Error: ${ error }` );
-            throw new Error( 'Something went wrong!!!' );
+            throw new Error( error  );
         }
     }
 }

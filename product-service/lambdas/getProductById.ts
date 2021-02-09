@@ -12,8 +12,11 @@ export const getProductById: (event, _context) => Promise<responseInterface> = a
 
         await DBInstance.connect();
         const product: ProductInterface | null = await productsModelInstance.getProductById( productId );
-
-        return successResponse( { product } );
+        
+        if( product )
+            return successResponse( { product } );
+        
+        return successResponse( { message: "Product not found!!!" }, 404 );
     }
     catch ( err ) {
         return errorResponse( err );

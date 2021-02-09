@@ -23,7 +23,7 @@ const serverlessConfiguration: Serverless = {
       minimumCompressionSize: 1024,
     },
     environment: {
-      AWS_NODEJS_CONNECTION_REUSE_ENABLED: '1',
+      AWS_NODEJS_CONNECTION_REUSE_ENABLED: '10',
       DB_HOST: 'ziggy.db.elephantsql.com',
       DB_PORT: '5432',
       DB_NAME: 'yqcpikbt',
@@ -37,6 +37,8 @@ const serverlessConfiguration: Serverless = {
   functions: {
     getProductById: {
       handler: 'handler.getProductById',
+      memorySize: 128,
+      timeout: 10,
       events: [
         {
           http: {
