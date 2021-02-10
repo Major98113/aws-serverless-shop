@@ -30,6 +30,13 @@ const serverlessConfiguration: Serverless = {
       DB_USERNAME: 'DB_USERNAME',
       DB_PASSWORD: 'DB_PASSWORD'
     },
+    iamRoleStatements: [
+      {
+        Effect: "Allow",
+        Action: [ "s3:*" ],
+        Resource: [ "arn:aws:s3:::*" ]
+      }
+    ],
   },
   package: {
     include: [ '../libs/*' ]
