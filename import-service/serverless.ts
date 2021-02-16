@@ -24,11 +24,11 @@ const serverlessConfiguration: Serverless = {
     },
     environment: {
       AWS_NODEJS_CONNECTION_REUSE_ENABLED: '10',
-      DB_HOST: 'DB_HOST',
-      DB_PORT: 'DB_PORT',
-      DB_NAME: 'DB_NAME',
-      DB_USERNAME: 'DB_USERNAME',
-      DB_PASSWORD: 'DB_PASSWORD'
+      DB_HOST: 'ziggy.db.elephantsql.com',
+      DB_PORT: '5432',
+      DB_NAME: 'yqcpikbt',
+      DB_USERNAME: 'yqcpikbt',
+      DB_PASSWORD: 'LcIjch4PLbGFsHJnLlc-NSJwYxWxXAJ2'
     },
     iamRoleStatements: [
       {

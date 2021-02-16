@@ -19,7 +19,7 @@ const getBucketsList: ( s3: any ) => Promise< listBucketsInterface > = async ( s
 
 const isNecessaryBucketExists = ( existingBuckets: BucketInterface[], necessaryBucket: string ): boolean => 
     Boolean( existingBuckets.find(
-        ( bucket: BucketInterface ) => bucket.Name.match( IMPORT_PRODUCTS_BUCKET )
+        ( bucket: BucketInterface ) => bucket.Name.match( necessaryBucket )
     ));
 
 export const importProductsFile: ( event, _context ) => Promise<responseInterface> = async ( event, _context ) => {
@@ -34,9 +34,8 @@ export const importProductsFile: ( event, _context ) => Promise<responseInterfac
         const bucketParams = {
             Bucket : IMPORT_PRODUCTS_BUCKET,
             Key: `uploaded/${name}`,
-            Expires: 60,
-            ContentType: 'application/vnd.ms-excel;',
-            ACL: "public-read"
+            Expires: 1200,
+            ContentType: 'application/vnd.ms-excel'
         };
 
         //const response = await s3.putObject( bucketParams ).promise();
