@@ -27,18 +27,63 @@
     For creating Public Bucket Policy, you need to dismiss "Block all public access" option and add next policy in field:
 </p>
  <pre>
-            {
-                "Version": "2008-10-17",
-                "Statement": [
-                    {
-                        "Sid": "AllowPublicRead",
-                        "Effect": "Allow",
-                        "Principal": {
-                            "AWS": "*"
-                        },
-                        "Action": "s3:GetObject",
-                        "Resource": "arn:aws:s3:::aws-shop-be-import-service/*"
-                    }
-                ]
-            }
-    </pre>
+        {
+            "Version": "2008-10-17",
+            "Statement": [
+                {
+                    "Sid": "AllowPublicRead",
+                    "Effect": "Allow",
+                    "Principal": {
+                        "AWS": "*"
+                    },
+                    "Action": "s3:GetObject",
+                    "Resource": "arn:aws:s3:::aws-shop-be-import-service/*"
+                }
+            ]
+        }
+</pre>
+<p>
+    Configuration for correct uploading to S3 bucket CSV files:
+</p>
+<h3>
+    Bucket policy
+</h3>
+<pre>
+  {
+      "Version": "2012-10-17",
+      "Id": "Policy1613559523522",
+      "Statement": [
+          {
+              "Sid": "Stmt1613559520235",
+              "Effect": "Allow",
+              "Principal": "*",
+              "Action": [
+                  "s3:PutObject",
+                  "s3:PutObjectAcl"
+              ],
+              "Resource": "arn:aws:s3:::imported-from-xsl-products/*"
+          }
+      ]
+  }  
+</pre>
+<h3>
+   Cross-origin resource sharing (CORS)
+</h3>
+<pre>
+  [
+      {
+          "AllowedHeaders": [
+              "*"
+          ],
+          "AllowedMethods": [
+              "PUT",
+              "POST",
+              "DELETE"
+          ],
+          "AllowedOrigins": [
+              "*"
+          ],
+          "ExposeHeaders": []
+      }
+  ]
+</pre>

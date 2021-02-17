@@ -25,20 +25,21 @@ const isNecessaryBucketExists = ( existingBuckets: BucketInterface[], necessaryB
 export const importProductsFile: ( event, _context ) => Promise<responseInterface> = async ( event, _context ) => {
     try {
         const { queryStringParameters: { name }} = event;
-        const s3 = new AWS.S3({ region: 'us-east-1' });
-        const { Buckets } = await getBucketsList( s3 );
-        
-        if( !isNecessaryBucketExists( Buckets, IMPORT_PRODUCTS_BUCKET ) )
-            await s3.createBucket({ Bucket: IMPORT_PRODUCTS_BUCKET }).promise( );
-
         const bucketParams = {
             Bucket : IMPORT_PRODUCTS_BUCKET,
             Key: `uploaded/${name}`,
             Expires: 1200,
             ContentType: 'application/vnd.ms-excel'
         };
+        const s3 = new AWS.S3({ region: 'us-east-1' });
 
-        //const response = await s3.putObject( bucketParams ).promise();
+        console.log( "Env:: ", JSON.stringify( process.env ));
+
+        // const { Buckets } = await getBucketsList( s3 );
+        
+        // if( !isNecessaryBucketExists( Buckets, IMPORT_PRODUCTS_BUCKET ) )
+        //     await s3.createBucket({ Bucket: IMPORT_PRODUCTS_BUCKET }).promise( );
+
         const url = await s3.getSignedUrlPromise( 'putObject', bucketParams );
 
         return successResponse( url );
