@@ -10,7 +10,7 @@ export const importFileParser: ( event, _context ) => Promise<responseInterface>
             Key: key
         };
         const s3 = new AWS.S3({ region: 'us-east-1' });
-        const readableStream = s3.getObject( bucketParams ).createReadStream();
+        //const readableStream = s3.getObject( bucketParams ).createReadStream();
 
         return successResponse( "Hi" );
     }

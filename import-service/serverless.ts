@@ -122,6 +122,11 @@ const serverlessConfiguration: Serverless = {
           }
         }
       }
+    },
+    Outputs: {
+      OutputKeyName: {
+        Value: "Lorem ipsum"
+      }
     }
   }
 }
