@@ -3,10 +3,7 @@ import { IMPORT_PRODUCTS_BUCKET } from "../libs/constants/s3";
 
 const serverlessConfiguration: Serverless = {
   service: {
-    name: 'import-service',
-    // app and org for use with dashboard.serverless.com
-    // app: your-app-name,
-    // org: your-org-name,
+    name: 'import-service'
   },
   frameworkVersion: '2',
   custom: {
@@ -15,7 +12,6 @@ const serverlessConfiguration: Serverless = {
       includeModules: true
     }
   },
-  // Add the serverless-webpack plugin
   plugins: ['serverless-webpack', 'serverless-offline'],
   provider: {
     name: 'aws',
@@ -66,31 +62,40 @@ const serverlessConfiguration: Serverless = {
         }
       ]
     },
-    // importFileParser: {
-    //   handler: 'handler.importFileParser',
-    //   events: [
-    //     {
-    //       s3: {
-    //         bucket: IMPORT_PRODUCTS_BUCKET,
-    //         event: "s3:ObjectCreated:*",
-    //         rules: [
-    //           {
-    //             prefix: "uploaded/",
-    //             suffix: "csv"
-    //           }
-    //         ],
-    //         existing: true
-    //       }
-    //     }
-    //   ]
-    // }
+    importFileParser: {
+      handler: 'handler.importFileParser',
+      events: [
+        {
+          s3: {
+            bucket: IMPORT_PRODUCTS_BUCKET,
+            event: "s3:ObjectCreated:*",
+            rules: [
+              {
+                prefix: "uploaded/",
+                suffix: "csv"
+              }
+            ],
+            existing: true
+          }
+        }
+      ]
+    }
   },
   resources: {
     Resources: {
       ImportProductsBucket: {
         Type: "AWS::S3::Bucket",
         Properties: {
-          BucketName: IMPORT_PRODUCTS_BUCKET
+          BucketName: IMPORT_PRODUCTS_BUCKET,
+          CorsConfiguration: {
+            CorsRules: [
+              {
+                AllowedHeaders: [ "*" ],
+                AllowedMethods: [ "PUT", "POST", "DELETE" ],
+                AllowedOrigins: [ "*" ]
+              }
+            ]
+          }
         }
       },
       ImportProductsBucketPolicy: {

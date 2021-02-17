@@ -74,7 +74,10 @@ const serverlessConfiguration: Serverless = {
           QueueName: "FirstQueue"
         }
       }
-    }
+    },
+    // Outputs: {
+    //
+    // }
   }
 }
 
