@@ -1,0 +1,9 @@
+const DB_CONFIG = {
+    DB_HOST: 'DB_HOST',
+    DB_PORT: 'DB_PORT',
+    DB_NAME: 'DB_NAME',
+    DB_USERNAME: 'DB_USERNAME',
+    DB_PASSWORD: 'DB_PASSWORD'
+}
+
+export { DB_CONFIG };

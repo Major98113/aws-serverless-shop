@@ -1,4 +1,5 @@
 import type { Serverless } from 'serverless/aws';
+import { DB_CONFIG } from "../libs/constants/dbConfig";
 
 const serverlessConfiguration: Serverless = {
   service: {
@@ -21,11 +22,7 @@ const serverlessConfiguration: Serverless = {
     environment: {
       AWS_NODEJS_CONNECTION_REUSE_ENABLED: '10',
       TEST: "${cf:import-service-dev.CatalogItemsQueue}",
-      DB_HOST: 'ziggy.db.elephantsql.com',
-      DB_PORT: '5432',
-      DB_NAME: 'yqcpikbt',
-      DB_USERNAME: 'yqcpikbt',
-      DB_PASSWORD: 'LcIjch4PLbGFsHJnLlc-NSJwYxWxXAJ2'
+      ...DB_CONFIG
     },
     iamRoleStatements: [
       {

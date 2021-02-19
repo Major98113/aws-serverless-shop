@@ -7,8 +7,8 @@ export const importProductsFile: ( event, _context ) => Promise<responseInterfac
         const { queryStringParameters: { name }} = event;
         const bucketParams = {
             Bucket : IMPORT_PRODUCTS_BUCKET,
-            Key: `uploaded/${name}`,
-            Expires: 1200,
+            Key: `uploaded/${ name }`,
+            Expires: 60,
             ContentType: 'application/vnd.ms-excel'
         };
         const s3 = new AWS.S3({ region: 'us-east-1' });

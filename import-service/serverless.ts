@@ -1,4 +1,5 @@
 import type { Serverless } from 'serverless/aws';
+import { DB_CONFIG } from "../libs/constants/dbConfig";
 import { IMPORT_PRODUCTS_BUCKET } from "../libs/constants/s3";
 
 const serverlessConfiguration: Serverless = {
@@ -20,12 +21,8 @@ const serverlessConfiguration: Serverless = {
       minimumCompressionSize: 1024,
     },
     environment: {
+      ...DB_CONFIG,
       AWS_NODEJS_CONNECTION_REUSE_ENABLED: '10',
-      DB_HOST: 'ziggy.db.elephantsql.com',
-      DB_PORT: '5432',
-      DB_NAME: 'yqcpikbt',
-      DB_USERNAME: 'yqcpikbt',
-      DB_PASSWORD: 'LcIjch4PLbGFsHJnLlc-NSJwYxWxXAJ2',
       IMPORT_PRODUCTS_BUCKET_ARN: {
         Ref: "ImportProductsBucket"
       },
