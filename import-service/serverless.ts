@@ -12,7 +12,7 @@ const serverlessConfiguration: Serverless = {
       includeModules: true
     }
   },
-  plugins: ['serverless-webpack', 'serverless-offline'],
+  plugins: [ 'serverless-webpack', 'serverless-offline' ],
   provider: {
     name: 'aws',
     runtime: 'nodejs12.x',
@@ -28,6 +28,9 @@ const serverlessConfiguration: Serverless = {
       DB_PASSWORD: 'LcIjch4PLbGFsHJnLlc-NSJwYxWxXAJ2',
       IMPORT_PRODUCTS_BUCKET_ARN: {
         Ref: "ImportProductsBucket"
+      },
+      CATALOG_ITEMS_QUEUE: {
+        Ref: "catalogItemsQueue"
       }
     },
     iamRoleStatements: [
@@ -42,6 +45,15 @@ const serverlessConfiguration: Serverless = {
         Resource: [
           {
             "Fn::GetAtt" : [ "ImportProductsBucket", "Arn" ]
+          }
+        ]
+      },
+      {
+        Effect: "Allow",
+        Action:"sqs:*",
+        Resource: [
+          {
+            "Fn::GetAtt" : [ "catalogItemsQueue", "Arn" ]
           }
         ]
       }
@@ -121,11 +133,19 @@ const serverlessConfiguration: Serverless = {
             ]
           }
         }
+      },
+      catalogItemsQueue: {
+        Type: "AWS::SQS::Queue",
+        Properties: {
+          QueueName: "catalogItemsQueue"
+        }
       }
     },
     Outputs: {
-      OutputKeyName: {
-        Value: "Lorem ipsum"
+      CatalogItemsQueue: {
+        Value: {
+          "Fn::GetAtt" : [ "catalogItemsQueue", "Arn" ]
+        }
       }
     }
   }

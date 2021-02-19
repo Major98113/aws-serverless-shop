@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "aws-sdk": "^2.840.0",
+    "csv-parser": "^3.0.0",
     "inversify": "^5.0.5",
     "pg": "^8.5.1",
     "reflect-metadata": "^0.1.13",

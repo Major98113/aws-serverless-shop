@@ -2,10 +2,7 @@ import type { Serverless } from 'serverless/aws';
 
 const serverlessConfiguration: Serverless = {
   service: {
-    name: 'product-service',
-    // app and org for use with dashboard.serverless.com
-    // app: your-app-name,
-    // org: your-org-name,
+    name: 'product-service'
   },
   frameworkVersion: '2',
   custom: {
@@ -14,7 +11,6 @@ const serverlessConfiguration: Serverless = {
       includeModules: true
     }
   },
-  // Add the serverless-webpack plugin
   plugins: ['serverless-webpack', 'serverless-offline'],
   provider: {
     name: 'aws',
@@ -24,12 +20,20 @@ const serverlessConfiguration: Serverless = {
     },
     environment: {
       AWS_NODEJS_CONNECTION_REUSE_ENABLED: '10',
+      TEST: "${cf:import-service-dev.CatalogItemsQueue}",
       DB_HOST: 'ziggy.db.elephantsql.com',
       DB_PORT: '5432',
       DB_NAME: 'yqcpikbt',
       DB_USERNAME: 'yqcpikbt',
       DB_PASSWORD: 'LcIjch4PLbGFsHJnLlc-NSJwYxWxXAJ2'
     },
+    iamRoleStatements: [
+      {
+        Effect: "Allow",
+        Action:"sqs:*",
+        Resource: [ "arn:aws:sqs:*" ]
+      }
+    ],
   },
   package: {
     include: [ '../libs/*' ]
@@ -101,6 +105,19 @@ const serverlessConfiguration: Serverless = {
                 }
               }
             }
+          }
+        }
+      ]
+    },
+    catalogBatchProcessProducts: {
+      handler: 'handler.catalogBatchProcessProducts',
+      memorySize: 256,
+      timeout: 20,
+      events: [
+        {
+          sqs: {
+            batchSize: 5,
+            arn: "${cf:import-service-dev.CatalogItemsQueue}"
           }
         }
       ]
