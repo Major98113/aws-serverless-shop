@@ -30,6 +30,19 @@ const serverlessConfiguration: Serverless = {
     basicAuthorizer: {
       handler: 'handler.basicAuthorizer'
     }
+  },
+  resources: {
+    Resources: {},
+    Outputs: {
+      BasicAuthorizerLambdaFunctionQualifiedArn: {
+        Value: {
+          "Fn::GetAtt": "BasicAuthorizerLambdaFunction.Arn"
+        },
+        Export: {
+          Name: "ServiceARN"
+        }
+      }
+    }
   }
 }
 
