@@ -10,6 +10,10 @@ const serverlessConfiguration: Serverless = {
     webpack: {
       webpackConfig: './webpack.config.js',
       includeModules: true
+    },
+    "serverless-offline": {
+      httpPort: 4000,
+      lambdaPort: 4001
     }
   },
   plugins: ['serverless-webpack', 'serverless-offline'],
@@ -29,6 +33,11 @@ const serverlessConfiguration: Serverless = {
         Effect: "Allow",
         Action:"sqs:*",
         Resource: [ "arn:aws:sqs:*" ]
+      },
+      {
+        Effect: "Allow",
+        Action: "*",
+        Resource: [ "arn:aws:lambda:*" ]
       }
     ],
   },
@@ -66,7 +75,13 @@ const serverlessConfiguration: Serverless = {
           http: {
             method: 'get',
             path: 'products',
-            cors: true
+            cors: true,
+            authorizer: {
+              arn: "arn:aws:lambda:us-east-1:664916330638:function:authorization-service-dev-basicAuthorizer",
+              resultTtlInSeconds: 0,
+              identitySource: "method.request.header.Authorization",
+              type: "request",
+            }
           }
         }
       ]

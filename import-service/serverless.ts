@@ -11,6 +11,10 @@ const serverlessConfiguration: Serverless = {
     webpack: {
       webpackConfig: './webpack.config.js',
       includeModules: true
+    },
+    "serverless-offline": {
+      httpPort: 5000,
+      lambdaPort: 5001
     }
   },
   plugins: [ 'serverless-webpack', 'serverless-offline' ],
