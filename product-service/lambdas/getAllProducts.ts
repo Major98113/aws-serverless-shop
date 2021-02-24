@@ -6,7 +6,6 @@ import { errorResponse, successResponse, responseInterface } from "../../libs/re
 
 export const getAllProducts: ( event, _context ) => Promise<responseInterface> = async (_event, _context) => {
     try {
-        console.log("aaaaaaaaa");
         const DBInstance = diContainer.get<DBInterface>( TYPES.DB );
         const productsModelInstance = new ProductsModel( DBInstance );
 

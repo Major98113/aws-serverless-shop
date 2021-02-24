@@ -25,7 +25,6 @@ const serverlessConfiguration: Serverless = {
     },
     environment: {
       AWS_NODEJS_CONNECTION_REUSE_ENABLED: '10',
-      TEST: "${cf:import-service-dev.CatalogItemsQueue}",
       ...DB_CONFIG
     },
     iamRoleStatements: [
@@ -77,7 +76,7 @@ const serverlessConfiguration: Serverless = {
             path: 'products',
             cors: true,
             authorizer: {
-              arn: "arn:aws:lambda:us-east-1:664916330638:function:authorization-service-dev-basicAuthorizer",
+              arn: "${cf:authorization-service-dev.AuthorizationServiceLambda}",
               resultTtlInSeconds: 0,
               identitySource: "method.request.header.Authorization",
               type: "request",

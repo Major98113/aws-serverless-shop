@@ -1,0 +1,26 @@
+service: authorization-service
+frameworkVersion: '2'
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+
+plugins:
+  - serverless-webpack
+
+custom:
+  webpack:
+    webpackConfig: 'config/webpack.config.js'
+    includeModules: true
+
+functions:
+  basicAuthorizerFunc:
+    handler: handler.basicAuthorizerFunc
+
+resources:
+  Outputs:
+    AuthorizationServiceLambda:
+      Export:
+        Name: AuthorizationServiceLambdaARN
+      Value:
+        Fn::GetAtt: BasicAuthorizerFuncLambdaFunction.Arn

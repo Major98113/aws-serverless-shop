@@ -24,7 +24,7 @@ const asyncReadableStreamForTheRecords = async ( readableStream, pushData ) =>
 
 const uploadRecordToSqs = async ( record ) => {
     try {
-        console.log("Record: ", record );
+        console.log("Record data: ", record );
 
         pendingSQSRequests.push(
             sqs.sendMessage({
