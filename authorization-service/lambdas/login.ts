@@ -5,9 +5,9 @@ export const login: ( event, _context ) => Promise<responseInterface> = async ( 
         const { username = "", password = "" } = JSON.parse( event.body );
 
         const bufferedCredentials = new Buffer(`${ username }:${ password }`);
-        const base64Credentials = bufferedCredentials.toString('base64' );
+        const encodedCredentials = bufferedCredentials.toString('base64' );
 
-        return successResponse( { message: base64Credentials });
+        return successResponse( { message: encodedCredentials });
     }
     catch ( err ){
         return errorResponse( err );
