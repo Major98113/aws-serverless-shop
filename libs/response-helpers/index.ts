@@ -26,7 +26,7 @@ const errorResponse = ( err: Error, statusCode: number = 500 ): responseInterfac
         headers: {
             ...defaultHeaders
         },
-        body: JSON.stringify( err.message || 'Something went wrong !!!' )
+        body: JSON.stringify( { message: err.message || 'Something went wrong !!!' })
     }
 }
 

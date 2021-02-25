@@ -1,3 +1,5 @@
+import { DB_CONFIG } from "../libs/constants/dbConfig";
+
 const serverlessConfiguration = {
   service: 'authorization-service',
   frameworkVersion: '2',
@@ -17,6 +19,7 @@ const serverlessConfiguration = {
     },
     environment: {
       AWS_NODEJS_CONNECTION_REUSE_ENABLED: '1',
+      ...DB_CONFIG
     },
     lambdaHashingVersion: '20201221',
   },
