@@ -5,6 +5,7 @@ import {DBInterface} from "./DB.interface";
 import {diContainer} from "../di/inversify.config";
 import {LoggerInterface} from "../logger/logger.interface";
 import {TYPES} from "../types";
+import { DB_CONFIG } from "../constants/dbConfig";
 
 @injectable()
 class PostgresDB implements DBInterface {
@@ -12,7 +13,7 @@ class PostgresDB implements DBInterface {
     private readonly logger: LoggerInterface;
 
     constructor() {
-        const { DB_HOST, DB_PORT, DB_NAME, DB_USERNAME, DB_PASSWORD } = process.env;
+        const { DB_HOST, DB_PORT, DB_NAME, DB_USERNAME, DB_PASSWORD } = DB_CONFIG;
         const dbOptions = {
             host: DB_HOST,
             port: DB_PORT,

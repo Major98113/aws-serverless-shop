@@ -1,5 +1,4 @@
 import type { Serverless } from 'serverless/aws';
-import { DB_CONFIG } from "../libs/constants/dbConfig";
 
 const serverlessConfiguration: Serverless = {
   service: {
@@ -26,7 +25,7 @@ const serverlessConfiguration: Serverless = {
     },
     environment: {
       AWS_NODEJS_CONNECTION_REUSE_ENABLED: '10',
-      ...DB_CONFIG
+      NODE_ENV: '${opt:stage}'
     },
     iamRoleStatements: [
       {
