@@ -20,6 +20,7 @@ const serverlessConfiguration: Serverless = {
   provider: {
     name: 'aws',
     runtime: 'nodejs12.x',
+    stage: '${opt:stage}',
     apiGateway: {
       minimumCompressionSize: 1024,
     },

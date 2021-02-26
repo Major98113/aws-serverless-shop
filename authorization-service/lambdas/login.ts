@@ -18,8 +18,6 @@ export const login: ( event, _context ) => Promise<responseInterface> = async ( 
 
         const user: UserInterface | null = await usersModelInstance.getUserByCredentials( username, encodedPassword );
 
-        console.log( "AGA", user );
-
         if( !user )
             return errorResponse( new Error( "Unauthorized!!!" ), 401 );
 

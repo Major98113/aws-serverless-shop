@@ -4,7 +4,10 @@
   "description": "Serverless webpack example using Typescript",
   "main": "handler.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "package-build": "sls package",
+    "deploy:dev": "sls deploy --stage dev",
+    "deploy:qa": "sls deploy --stage qa",
+    "deploy:prod": "sls deploy --stage prod"
   },
   "dependencies": {
     "aws-sdk": "^2.840.0",
