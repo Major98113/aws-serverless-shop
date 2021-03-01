@@ -1,5 +1,10 @@
+import {diContainer} from "../../libs/di/inversify.config";
+import {DBInterface} from "../../libs/db/DB.interface";
+import {TYPES} from "../../libs/types";
+import {UserInterface, UsersModel} from "../../libs/models/users.model";
+
 export const basicAuthorizer = async (event, _ctx, cb) => {
-    console.log('Event : ', JSON.stringify(event));
+    console.log('Event: ', JSON.stringify(event));
 
     if (event['type'] !== 'REQUEST') {
         cb( 'Unauthorized' );
@@ -11,8 +16,19 @@ export const basicAuthorizer = async (event, _ctx, cb) => {
 
         console.log(`Username: ${username} | Password: ${password}`);
 
-        const storedPwd = process.env[username];
-        const effect = (!storedPwd || storedPwd !== password) ? 'Deny': 'Allow';
+        const bufferedPassword = new Buffer(`${ password }`);
+        const encodedPassword = bufferedPassword.toString('base64' );
+
+        const DBInstance = diContainer.get<DBInterface>( TYPES.DB );
+        const usersModelInstance = new UsersModel( DBInstance );
+
+        await DBInstance.connect();
+
+        const user: UserInterface | null = await usersModelInstance.getUserByCredentials( username, encodedPassword );
+
+        await DBInstance.disconnect();
+
+        const effect = (!user) ? 'Deny': 'Allow';
         const policy = generatePolicy(encodedCredentials, event.methodArn, effect);
 
         cb( null, policy );

@@ -13,6 +13,8 @@ export const getAllProducts: ( event, _context ) => Promise<responseInterface> =
 
         const products: ProductInterface[] = await productsModelInstance.getAllProducts();
 
+        await DBInstance.disconnect();
+
         return successResponse( products );
     } 
     catch (err) {

@@ -14,6 +14,8 @@ export const removeProduct: ( event, _context ) => Promise<responseInterface> = 
 
         await productsModelInstance.removeProduct( productId );
 
+        await DBInstance.disconnect();
+
         return successResponse( { message: "Product successfully removed" } );
     } 
     catch (err) {

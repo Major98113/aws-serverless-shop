@@ -41,6 +41,17 @@ class PostgresDB implements DBInterface {
         }
     }
 
+    async disconnect() {
+        try {
+            this.logger.logDBRequest("Start disconnecting from DB");
+            await this.client.end();
+            this.logger.logDBRequest("Disconnection from DB successfully finished");
+        }
+        catch  (err ) {
+            this.logger.logError( err.message || "DB disconnection error" + JSON.stringify( err ) )
+        }
+    }
+
     async query( queryStr: string ) {
         try {
             this.logger.logDBRequest("DB query: " + queryStr );

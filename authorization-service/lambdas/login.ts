@@ -24,6 +24,7 @@ export const login: ( event, _context ) => Promise<responseInterface> = async ( 
         const bufferedCredentials = new Buffer(`${ username }:${ password }`);
         const encodedCredentials = bufferedCredentials.toString('base64' );
 
+        await DBInstance.disconnect();
 
         return successResponse( { message: encodedCredentials });
     }

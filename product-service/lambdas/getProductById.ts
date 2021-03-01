@@ -15,7 +15,9 @@ export const getProductById: (event, _context) => Promise<responseInterface> = a
         
         if( product )
             return successResponse( { product } );
-        
+
+        await DBInstance.disconnect();
+
         return successResponse( { message: "Product not found!!!" }, 404 );
     }
     catch ( err ) {

@@ -4,6 +4,9 @@ interface DBInterface {
     },
     query: {
         ( query: string ): Promise <any>
+    },
+    disconnect: {
+        ( ): Promise <any>
     }
 }
 

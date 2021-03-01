@@ -16,6 +16,8 @@ export const createProduct: ( event, _context ) => Promise<responseInterface> = 
             { title, description, price, logo, count }
         );
 
+        await DBInstance.disconnect();
+
         return successResponse( { product } );
     } 
     catch (err) {

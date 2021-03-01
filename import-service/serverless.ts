@@ -1,5 +1,4 @@
 import type { Serverless } from 'serverless/aws';
-import { DB_CONFIG } from "../libs/constants/dbConfig";
 import { IMPORT_PRODUCTS_BUCKET } from "../libs/constants/s3";
 
 const serverlessConfiguration: Serverless = {
@@ -21,12 +20,13 @@ const serverlessConfiguration: Serverless = {
   provider: {
     name: 'aws',
     runtime: 'nodejs12.x',
+    stage: '${opt:stage}',
     apiGateway: {
       minimumCompressionSize: 1024,
     },
     environment: {
-      ...DB_CONFIG,
       AWS_NODEJS_CONNECTION_REUSE_ENABLED: '10',
+      ENV_STAGE: '${opt:stage}',
       IMPORT_PRODUCTS_BUCKET_ARN: {
         Ref: "ImportProductsBucket"
       },
@@ -57,6 +57,11 @@ const serverlessConfiguration: Serverless = {
             "Fn::GetAtt" : [ "catalogItemsQueue", "Arn" ]
           }
         ]
+      },
+      {
+        Effect: "Allow",
+        Action: "*",
+        Resource: [ "arn:aws:lambda:*" ]
       }
     ],
   },
@@ -71,6 +76,13 @@ const serverlessConfiguration: Serverless = {
           http: {
             method: 'get',
             path: 'import',
+            authorizer: {
+              arn: "${cf:authorization-service-dev.AuthorizationServiceLambda}",
+              resultTtlInSeconds: 0,
+              identitySource: "method.request.header.Authorization",
+              type: "request",
+            },
+            cors: true
           }
         }
       ]

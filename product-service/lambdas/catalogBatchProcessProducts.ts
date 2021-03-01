@@ -19,6 +19,8 @@ export const catalogBatchProcessProducts: ( event, _context ) => Promise<respons
             );
         }
 
+        await DBInstance.disconnect();
+
         return successResponse( { message: "Products successfully imported to DB" } );
     }
     catch (err) {

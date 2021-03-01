@@ -25,18 +25,13 @@ const serverlessConfiguration: Serverless = {
     },
     environment: {
       AWS_NODEJS_CONNECTION_REUSE_ENABLED: '10',
-      NODE_ENV: '${opt:stage}'
+      ENV_STAGE: '${opt:stage}'
     },
     iamRoleStatements: [
       {
         Effect: "Allow",
         Action:"sqs:*",
         Resource: [ "arn:aws:sqs:*" ]
-      },
-      {
-        Effect: "Allow",
-        Action: "*",
-        Resource: [ "arn:aws:lambda:*" ]
       }
     ],
   },
@@ -74,13 +69,7 @@ const serverlessConfiguration: Serverless = {
           http: {
             method: 'get',
             path: 'products',
-            cors: true,
-            authorizer: {
-              arn: "${cf:authorization-service-dev.AuthorizationServiceLambda}",
-              resultTtlInSeconds: 0,
-              identitySource: "method.request.header.Authorization",
-              type: "request",
-            }
+            cors: true
           }
         }
       ]
