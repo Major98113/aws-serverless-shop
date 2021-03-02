@@ -11,6 +11,11 @@ const serverlessConfiguration = {
   provider: {
     name: 'aws',
     runtime: 'nodejs12.x',
+    stage: '${opt:stage}',
+    tracing: {
+      apiGateway: true,
+      lambda: true
+    },
     apiGateway: {
       minimumCompressionSize: 1024,
       shouldStartNameWithService: true,

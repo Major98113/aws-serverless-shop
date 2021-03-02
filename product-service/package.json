@@ -6,7 +6,9 @@
   "scripts": {
     "package-build": "sls package",
     "deploy:dev": "sls deploy --stage dev",
-    "deploy:prod": "sls deploy --stage prod"
+    "deploy:prod": "sls deploy --stage prod",
+    "remove:dev-stack": "sls remove --stage dev --region us-east-1",
+    "remove:prod-stack": "sls remove --stage prod --region us-east-1"
   },
   "dependencies": {
     "inversify": "^5.0.5",
