@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "aws-sdk": "^2.840.0",
+    "aws-xray-sdk-core": "^3.2.0",
     "csv-parser": "^3.0.0",
     "inversify": "^5.0.5",
     "pg": "^8.5.1",

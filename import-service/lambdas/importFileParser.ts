@@ -2,10 +2,12 @@ import AWS from "aws-sdk";
 import CSV from 'csv-parser';
 import { IMPORT_PRODUCTS_BUCKET } from "../../libs/constants/s3";
 import { errorResponse, successResponse, responseInterface } from "../../libs/response-helpers";
+import AWSXRay from "aws-xray-sdk-core";
 
 const { CATALOG_ITEMS_QUEUE } = process.env;
+const sqs = AWSXRay.captureAWSClient( new AWS.SQS() );
+
 const pendingSQSRequests: Promise<any>[] = [];
-const sqs = new AWS.SQS();
 
 const asyncReadableStreamForTheRecords = async ( readableStream, pushData ) =>
     new Promise(
@@ -41,7 +43,7 @@ const uploadRecordToSqs = async ( record ) => {
 export const importFileParser: ( event, _context ) => Promise<responseInterface> = async ( event, _context ) => {
     try {
         const { Records : [ { s3: { object: { key } } } ]} = event;
-        const s3 = new AWS.S3({ region: 'us-east-1' });
+        const s3 = AWSXRay.captureAWSClient( new AWS.S3({ region: 'us-east-1' }) );
         const bucketParams = {
             Bucket: IMPORT_PRODUCTS_BUCKET,
             Key: key
