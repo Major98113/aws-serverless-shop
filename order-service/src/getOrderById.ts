@@ -1,7 +1,7 @@
 import { diContainer } from "../../libs/di/inversify.config";
 import { DBInterface } from "../../libs/db/DB.interface";
 import { TYPES } from "../../libs/types";
-import { OrdersModel, OrderInterface } from "../../libs/models/orders.model";
+import { OrdersModel, OrderStatistics } from "../../libs/models/orders.model";
 import { errorResponse, successResponse, responseInterface } from "../../libs/response-helpers";
 
 export const getOrderById: ( event ) => Promise<responseInterface> = async ( event ) => {
@@ -11,7 +11,7 @@ export const getOrderById: ( event ) => Promise<responseInterface> = async ( eve
         const ordersModelInstance = new OrdersModel( DBInstance );
 
         await DBInstance.connect();
-        const order: OrderInterface | null = await ordersModelInstance.getOrderById( orderId );
+        const order: OrderStatistics| null = await ordersModelInstance.getOrderById( orderId );
         
         if( order )
             return successResponse( { order } );
