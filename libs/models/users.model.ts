@@ -27,7 +27,8 @@ class UsersModel implements UsersModelInterface{
             const response = await this.DB.query(`
                 SELECT user_id, username 
                     FROM users
-                        WHERE username = '${ username }' AND password = '${ password }'; `
+                        WHERE username = $1 
+                            AND password = $2;`, [ username, password ]
             );
 
             if( response?.rows?.length ) {

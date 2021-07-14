@@ -67,8 +67,8 @@ class OrdersModel implements OrdersModelInterface {
                     FROM orders
                         INNER JOIN order_products ON
                             orders.id = order_products.order_id
-                                where orders.id = '${ id }'
-                                ORDER BY orders.id;`
+                                WHERE orders.id = $1
+                                    ORDER BY orders.id;`, [ id ]
             );
 
             if( response?.rows?.length ) {

@@ -52,13 +52,19 @@ class PostgresDB implements DBInterface {
         }
     }
 
-    async query( queryStr: string ) {
+    async query( query, values ) {
         try {
-            this.logger.logDBRequest("DB query: " + queryStr );
-            return await this.client.query(queryStr);
+            this.logger.logDBRequest("DB query: " + query );
+            this.logger.logDBRequest("DB values: " + values );
+
+            if( values )
+                return await this.client.query( query, values );
+
+            return await this.client.query( query );
         }
         catch ( err) {
-            this.logger.logError( err.message || "DB query error" + JSON.stringify( err ) )
+            this.logger.logError( err.message || "DB query error" + JSON.stringify( err ) );
+            throw new Error( "Internal error happended" );
         }
     }
 }

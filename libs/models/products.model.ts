@@ -32,10 +32,10 @@ class ProductsModel implements ProductsModelInterface{
         try {
             const response = await this.DB.query(`
                 SELECT products.id, products.title, products.description, products.price, products.logo, stocks.count 
-                FROM products 
-                INNER JOIN stocks ON 
-                products.id = '${ id }'
-                AND stocks.product_id = '${ id }';`
+                    FROM products 
+                        INNER JOIN stocks ON 
+                            products.id = $1
+                                AND stocks.product_id = $1;`, [ id ]
             );
 
             if( response?.rows?.length ) {
@@ -79,14 +79,15 @@ class ProductsModel implements ProductsModelInterface{
     async createProduct({ title, description, price, logo, count }) {
         try {
             const { rows: [ createdProductRecord ] } = await this.DB.query(
-                `INSERT INTO products ( title, description, price, logo ) VALUES
-                 ( '${ title }', '${ description }', ${ Number( price ) }, '${ logo }' ) 
-                RETURNING *`
+                `INSERT INTO products ( title, description, price, logo ) 
+                    VALUES ( $1, $2, $3, $4 ) 
+                        RETURNING *`, [ title, description, Number( price ), logo ]
             );
+
             const { rows: [ createdStockRecord ] } = await this.DB.query(
-                `INSERT INTO stocks ( product_id, count ) VALUES
-                 ( '${ createdProductRecord.id }', ${ Number( count ) } ) 
-                RETURNING *`
+                `INSERT INTO stocks ( product_id, count ) 
+                    VALUES ( $1, $2 ) 
+                        RETURNING *`, [ createdProductRecord.id, Number( count ) ]
             ); 
 
             return {
@@ -103,8 +104,8 @@ class ProductsModel implements ProductsModelInterface{
     async removeProduct( id: string ) {
         try {
             await Promise.all([
-                this.DB.query(`DELETE FROM products WHERE id = '${ id }';`),
-                this.DB.query(`DELETE FROM stocks WHERE product_id = '${ id }';`)
+                this.DB.query(`DELETE FROM products WHERE id = $1;`, [ id ]),
+                this.DB.query(`DELETE FROM stocks WHERE product_id = $1;`, [ id ])
             ]);
         }
         catch(error) {

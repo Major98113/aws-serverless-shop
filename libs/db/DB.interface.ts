@@ -3,7 +3,7 @@ interface DBInterface {
         ( ): Promise <any>
     },
     query: {
-        ( query: string ): Promise <any>
+        ( query: string, values?: (null | boolean | number | string)[] ): Promise <any>
     },
     disconnect: {
         ( ): Promise <any>
