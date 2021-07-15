@@ -19,7 +19,7 @@ const serverlessConfiguration: Serverless = {
   provider: {
     name: 'aws',
     runtime: 'nodejs12.x',
-    stage: 'dev',
+    stage: '${opt:stage}',
     tracing: {
       apiGateway: true,
       lambda: true
@@ -70,7 +70,21 @@ const serverlessConfiguration: Serverless = {
           }
         }
       ]
-    }
+    },
+    createOrder: {
+      handler: 'handler.createOrder',
+      memorySize: 256,
+      timeout: 10,
+      events: [
+        {
+          http: {
+            method: 'put',
+            path: 'orders',
+            cors: true
+          }
+        }
+      ]
+    },
   }
 }
 
