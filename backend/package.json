@@ -20,5 +20,8 @@
     "inversify": "^5.0.5",
     "pg": "^8.5.1",
     "winston": "^3.3.3"
+  },
+  "devDependencies": {
+    "@types/node": "^16.3.2"
   }
 }
