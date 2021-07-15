@@ -1,0 +1,481 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="f80e3c74-0a02-4c01-af25-1938776053f0" name="Default Changelist" comment="Added X-Ray basic serverless configuration to our services">
+      <change beforePath="$PROJECT_DIR$/libs/constants/dbConfig.ts" beforeDir="false" afterPath="$PROJECT_DIR$/libs/constants/dbConfig.ts" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+        <option value="TypeScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1npbDcRPGIhIoGLjY9gvnCgACPV" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="javascript.nodejs.core.library.configured.version" value="15.8.0" />
+    <property name="javascript.nodejs.core.library.typings.version" value="14.14.31" />
+    <property name="js.buildTools.grunt.grunt-cli.package" value="" />
+    <property name="js.buildTools.gulp.gulp_package_dir" value="" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/testauth-service/lambdas" />
+    <property name="nodejs.jest.jest_package" value="" />
+    <property name="nodejs.mocha.mocha_node_package_dir" value="" />
+    <property name="nodejs.protractor.protractor_package" value="" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+    <property name="ts.external.directory.path" value="C:\Users\meiso\WebstormProjects\aws-local-lambdas\import-service\node_modules\typescript\lib" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\meiso\WebstormProjects\aws-local-lambdas\testauth-service\lambdas" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\meiso\WebstormProjects\aws-local-lambdas\product-service" />
+      <recent name="C:\Users\meiso\WebstormProjects\aws-local-lambdas\libs\config" />
+    </key>
+  </component>
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="node &lt;script path&gt;" />
+    </option>
+  </component>
+  <component name="RunManager" selected="npm.deploy:dev (2)">
+    <configuration default="true" type="js.build_tools.grunt">
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="js.build_tools.gulp">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <gulpfile />
+      <tasks />
+      <arguments />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="deploy:dev (1)" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/authorization-service/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="deploy:dev" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="deploy:dev (2)" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/product-service/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="deploy:dev" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="deploy:dev" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/import-service/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="deploy:dev" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="remove:dev-stack (1)" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/import-service/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="remove:dev-stack" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="remove:dev-stack (2)" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/product-service/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="remove:dev-stack" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="npm.deploy:dev (2)" />
+        <item itemvalue="npm.deploy:dev" />
+        <item itemvalue="npm.deploy:dev (1)" />
+        <item itemvalue="npm.remove:dev-stack (1)" />
+        <item itemvalue="npm.remove:dev-stack (2)" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="f80e3c74-0a02-4c01-af25-1938776053f0" name="Default Changelist" comment="" />
+      <created>1612089861372</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1612089861372</updated>
+      <workItem from="1612089862506" duration="3472000" />
+      <workItem from="1612093467229" duration="16533000" />
+      <workItem from="1612120511322" duration="1290000" />
+      <workItem from="1612169346313" duration="4033000" />
+      <workItem from="1612267674608" duration="2528000" />
+      <workItem from="1612359975593" duration="30000" />
+      <workItem from="1612432324992" duration="4153000" />
+      <workItem from="1612519302950" duration="9600000" />
+      <workItem from="1612713095384" duration="3529000" />
+      <workItem from="1613048185094" duration="12000" />
+      <workItem from="1613049377212" duration="1799000" />
+      <workItem from="1613118656904" duration="810000" />
+      <workItem from="1613124297909" duration="1193000" />
+      <workItem from="1613383986539" duration="647000" />
+      <workItem from="1613465397925" duration="7794000" />
+      <workItem from="1613557299331" duration="12839000" />
+      <workItem from="1613645791993" duration="7030000" />
+      <workItem from="1613662332254" duration="1070000" />
+      <workItem from="1613724870375" duration="13716000" />
+      <workItem from="1613984523102" duration="16602000" />
+      <workItem from="1614176418250" duration="2536000" />
+      <workItem from="1614182027753" duration="661000" />
+      <workItem from="1614182717589" duration="957000" />
+      <workItem from="1614183711888" duration="4777000" />
+      <workItem from="1614246893387" duration="5373000" />
+      <workItem from="1614252966374" duration="9417000" />
+      <workItem from="1614336825455" duration="10975000" />
+      <workItem from="1614431330568" duration="1013000" />
+      <workItem from="1614535175328" duration="1370000" />
+      <workItem from="1614536586357" duration="2602000" />
+      <workItem from="1614591852561" duration="13574000" />
+      <workItem from="1614682504726" duration="11068000" />
+      <workItem from="1614762059857" duration="8895000" />
+      <workItem from="1614847341217" duration="1839000" />
+      <workItem from="1614940625487" duration="839000" />
+      <workItem from="1615282851299" duration="591000" />
+      <workItem from="1615474280233" duration="1955000" />
+      <workItem from="1615538108412" duration="144000" />
+      <workItem from="1615914018663" duration="541000" />
+      <workItem from="1615969683792" duration="1146000" />
+      <workItem from="1615981607731" duration="1692000" />
+      <workItem from="1616066533979" duration="1795000" />
+      <workItem from="1616143621168" duration="591000" />
+      <workItem from="1616155014349" duration="594000" />
+      <workItem from="1617018746338" duration="1958000" />
+      <workItem from="1617028526996" duration="9000" />
+      <workItem from="1617199064962" duration="1427000" />
+      <workItem from="1617267275691" duration="1924000" />
+      <workItem from="1617273637403" duration="637000" />
+      <workItem from="1617289631819" duration="1620000" />
+      <workItem from="1617360260426" duration="1184000" />
+      <workItem from="1617610656229" duration="64000" />
+      <workItem from="1617734497201" duration="53000" />
+    </task>
+    <task id="LOCAL-00001" summary="Initial commit + added instructions">
+      <created>1612091733526</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1612091733526</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Added TS template">
+      <created>1612097774600</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1612097774600</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Added gitignore on global level">
+      <created>1612098578619</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1612098578619</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Added default handler">
+      <created>1612101212208</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1612101212208</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Added DI container">
+      <created>1612105858212</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1612105858212</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Finished getting product by id method">
+      <created>1612267748328</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1612267748328</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Created SQS service">
+      <created>1612447208130</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1612447208130</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Created SQS service">
+      <created>1612447358665</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1612447358665</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Setup S3 Bucket Policy">
+      <created>1613567228595</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1613567228595</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Setup S3 Bucket Policy + started SQS configuration">
+      <created>1613571793107</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1613571793107</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Finished SQS configuration">
+      <created>1613745184620</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1613745184620</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Finished SQS configuration">
+      <created>1613750136201</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1613750136201</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Added Basic Auth">
+      <created>1614011930384</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1614011930384</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Added Basic Auth">
+      <created>1614258513849</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1614258513849</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Added Users DB table">
+      <created>1614259773379</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1614259773379</updated>
+    </task>
+    <task id="LOCAL-00016" summary="Added login endpoint">
+      <created>1614267522189</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1614267522189</updated>
+    </task>
+    <task id="LOCAL-00017" summary="Added scripts for microservices">
+      <created>1614352316136</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1614352316136</updated>
+    </task>
+    <task id="LOCAL-00018" summary="Added scripts for microservices">
+      <created>1614369212489</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1614369212489</updated>
+    </task>
+    <task id="LOCAL-00019" summary="Added binded Basic Auth Token To Import Service and Removed from Product service">
+      <created>1614614549145</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1614614549145</updated>
+    </task>
+    <task id="LOCAL-00020" summary="Removed unnecessary queue service">
+      <created>1614614767062</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1614614767062</updated>
+    </task>
+    <task id="LOCAL-00021" summary="Added X-Ray basic serverless configuration to our services">
+      <created>1614691932291</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1614691932291</updated>
+    </task>
+    <task id="LOCAL-00022" summary="Added X-Ray basic serverless configuration to our services">
+      <created>1614711729189</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1614711729189</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Initial commit + added instructions" />
+    <MESSAGE value="Added TS template" />
+    <MESSAGE value="Added gitignore on global level" />
+    <MESSAGE value="Added default handler" />
+    <MESSAGE value="Added DI container" />
+    <MESSAGE value="Finished getting product by id method" />
+    <MESSAGE value="Created SQS service" />
+    <MESSAGE value="Setup S3 Bucket Policy" />
+    <MESSAGE value="Setup S3 Bucket Policy + started SQS configuration" />
+    <MESSAGE value="Finished SQS configuration" />
+    <MESSAGE value="Added Basic Auth" />
+    <MESSAGE value="Added Users DB table" />
+    <MESSAGE value="Added login endpoint" />
+    <MESSAGE value="Added scripts for microservices" />
+    <MESSAGE value="Added binded Basic Auth Token To Import Service and Removed from Product service" />
+    <MESSAGE value="Removed unnecessary queue service" />
+    <MESSAGE value="Added X-Ray basic serverless configuration to our services" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added X-Ray basic serverless configuration to our services" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="552" y="221" key="#Plugins" timestamp="1614536557242">
+      <screen x="0" y="0" width="1920" height="1160" />
+    </state>
+    <state x="552" y="221" key="#Plugins/0.0.1920.1160/-1600.0.1600.860@0.0.1920.1160" timestamp="1614536557242" />
+    <state x="414" y="235" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1614537819622">
+      <screen x="0" y="0" width="1920" height="1160" />
+    </state>
+    <state x="414" y="235" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1160/-1600.0.1600.860@0.0.1920.1160" timestamp="1614537819622" />
+    <state x="585" y="61" key="CommitChangelistDialog2" timestamp="1612098679459">
+      <screen x="0" y="0" width="1920" height="1160" />
+    </state>
+    <state x="585" y="61" key="CommitChangelistDialog2/0.0.1920.1160@0.0.1920.1160" timestamp="1612098679459" />
+    <state x="740" y="335" key="FileChooserDialogImpl" timestamp="1613482080383">
+      <screen x="0" y="0" width="1920" height="1160" />
+    </state>
+    <state x="740" y="335" key="FileChooserDialogImpl/0.0.1920.1160@0.0.1920.1160" timestamp="1613482080383" />
+    <state width="1579" height="216" key="GridCell.Tab.0.bottom" timestamp="1614711766524">
+      <screen x="0" y="0" width="1920" height="1160" />
+    </state>
+    <state width="1579" height="267" key="GridCell.Tab.0.bottom/0.0.1920.1160/-1600.0.1600.860@-1600.0.1600.860" timestamp="1614688654920" />
+    <state width="1579" height="216" key="GridCell.Tab.0.bottom/0.0.1920.1160/-1600.0.1600.860@0.0.1920.1160" timestamp="1614711766524" />
+    <state width="1899" height="315" key="GridCell.Tab.0.bottom/0.0.1920.1160@0.0.1920.1160" timestamp="1614267542619" />
+    <state width="1579" height="216" key="GridCell.Tab.0.center" timestamp="1614711766523">
+      <screen x="0" y="0" width="1920" height="1160" />
+    </state>
+    <state width="1579" height="267" key="GridCell.Tab.0.center/0.0.1920.1160/-1600.0.1600.860@-1600.0.1600.860" timestamp="1614688654920" />
+    <state width="1579" height="216" key="GridCell.Tab.0.center/0.0.1920.1160/-1600.0.1600.860@0.0.1920.1160" timestamp="1614711766523" />
+    <state width="1899" height="315" key="GridCell.Tab.0.center/0.0.1920.1160@0.0.1920.1160" timestamp="1614267542618" />
+    <state width="1579" height="216" key="GridCell.Tab.0.left" timestamp="1614711766523">
+      <screen x="0" y="0" width="1920" height="1160" />
+    </state>
+    <state width="1579" height="267" key="GridCell.Tab.0.left/0.0.1920.1160/-1600.0.1600.860@-1600.0.1600.860" timestamp="1614688654920" />
+    <state width="1579" height="216" key="GridCell.Tab.0.left/0.0.1920.1160/-1600.0.1600.860@0.0.1920.1160" timestamp="1614711766523" />
+    <state width="1899" height="315" key="GridCell.Tab.0.left/0.0.1920.1160@0.0.1920.1160" timestamp="1614267542617" />
+    <state width="1579" height="216" key="GridCell.Tab.0.right" timestamp="1614711766523">
+      <screen x="0" y="0" width="1920" height="1160" />
+    </state>
+    <state width="1579" height="267" key="GridCell.Tab.0.right/0.0.1920.1160/-1600.0.1600.860@-1600.0.1600.860" timestamp="1614688654920" />
+    <state width="1579" height="216" key="GridCell.Tab.0.right/0.0.1920.1160/-1600.0.1600.860@0.0.1920.1160" timestamp="1614711766523" />
+    <state width="1899" height="315" key="GridCell.Tab.0.right/0.0.1920.1160@0.0.1920.1160" timestamp="1614267542618" />
+    <state x="461" y="225" key="SettingsEditor" timestamp="1614537153086">
+      <screen x="0" y="0" width="1920" height="1160" />
+    </state>
+    <state x="461" y="225" key="SettingsEditor/0.0.1920.1160/-1600.0.1600.860@0.0.1920.1160" timestamp="1614537153086" />
+    <state width="498" height="446" key="SwitcherDM" timestamp="1614614482034">
+      <screen x="0" y="0" width="1920" height="1160" />
+    </state>
+    <state width="498" height="446" key="SwitcherDM/0.0.1920.1160/-1600.0.1600.860@0.0.1920.1160" timestamp="1614614482034" />
+    <state x="552" y="309" key="Vcs.Push.Dialog.v2" timestamp="1614711737145">
+      <screen x="0" y="0" width="1920" height="1160" />
+    </state>
+    <state x="552" y="309" key="Vcs.Push.Dialog.v2/0.0.1920.1160/-1600.0.1600.860@0.0.1920.1160" timestamp="1614711737145" />
+    <state x="552" y="309" key="Vcs.Push.Dialog.v2/0.0.1920.1160@0.0.1920.1160" timestamp="1614369213999" />
+    <state x="777" y="490" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1614538608528">
+      <screen x="0" y="0" width="1920" height="1160" />
+    </state>
+    <state x="777" y="490" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1160/-1600.0.1600.860@0.0.1920.1160" timestamp="1614538608528" />
+    <state x="-1600" y="0" width="1600" height="860" key="find.popup" timestamp="1617268488828">
+      <screen x="-1600" y="0" width="1600" height="860" />
+    </state>
+    <state x="-1600" y="0" width="1600" height="860" key="find.popup/0.0.1920.1160/-1600.0.1600.860@-1600.0.1600.860" timestamp="1617268488828" />
+    <state x="0" y="0" width="1920" height="1160" key="find.popup/0.0.1920.1160/-1600.0.1600.860@0.0.1920.1160" timestamp="1615981847177" />
+    <state x="668" y="297" width="583" height="590" key="find.popup/0.0.1920.1160@0.0.1920.1160" timestamp="1614368625374" />
+    <state x="616" y="270" width="672" height="677" key="run.anything.popup" timestamp="1614536703851">
+      <screen x="0" y="0" width="1920" height="1160" />
+    </state>
+    <state x="616" y="270" width="672" height="677" key="run.anything.popup/0.0.1920.1160/-1600.0.1600.860@0.0.1920.1160" timestamp="1614536703851" />
+    <state x="623" y="255" width="672" height="678" key="search.everywhere.popup" timestamp="1614614417389">
+      <screen x="0" y="0" width="1920" height="1160" />
+    </state>
+    <state x="623" y="255" width="672" height="678" key="search.everywhere.popup/0.0.1920.1160/-1600.0.1600.860@0.0.1920.1160" timestamp="1614614417389" />
+  </component>
+</project>
