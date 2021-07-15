@@ -14,6 +14,8 @@ import Button from "@material-ui/core/Button";
 export default function Orders() {
   const [orders, setOrders] = useState<any>([]);
 
+  console.log(orders);
+
   useEffect(() => {
     axios.get(`${API_PATHS.order}/orders`)
       .then(res => setOrders(res.data));
@@ -53,7 +55,7 @@ export default function Orders() {
               <TableCell align="right">{order.address?.address}</TableCell>
               <TableCell align="right">{order.items.status.toUpperCase()}</TableCell>
               <TableCell align="right">
-                <Button size="small" color="primary" component={Link} to={`/admin/orders/${order.id}`}>
+                <Button size="small" color="primary" component={Link} to={`/admin/orders/${order.items.order_id}`}>
                   Manage
                 </Button>
                 <Button size="small" color="secondary" onClick={() => onDelete(order.id)}>

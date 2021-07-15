@@ -19,7 +19,7 @@ const serverlessConfiguration: Serverless = {
   provider: {
     name: 'aws',
     runtime: 'nodejs12.x',
-    stage: '${opt:stage}',
+    stage: 'dev',
     tracing: {
       apiGateway: true,
       lambda: true

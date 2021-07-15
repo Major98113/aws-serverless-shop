@@ -1,4 +1,4 @@
-import {Client} from 'pg';
+import {Client, Pool} from 'pg';
 import {injectable} from 'inversify';
 import 'reflect-metadata';
 import {DBInterface} from "./DB.interface";
@@ -9,7 +9,8 @@ import { DB_CONFIG } from "../constants/dbConfig";
 
 @injectable()
 class PostgresDB implements DBInterface {
-    private readonly client: Client;
+    private client: Client;
+    private readonly pool: Pool;
     private readonly logger: LoggerInterface;
 
     constructor() {
@@ -27,13 +28,13 @@ class PostgresDB implements DBInterface {
         };
 
         this.logger = diContainer.get<LoggerInterface>( TYPES.LOGGER );
-        this.client = new Client(dbOptions);
+        this.pool = new Pool(dbOptions);
     }
 
     async connect() {
         try {
             this.logger.logDBRequest("Start connecting to DB");
-            await this.client.connect();
+            this.client = await this.pool.connect();
             this.logger.logDBRequest("Connection to DB successfully finished");
         }
         catch ( err ){
@@ -44,7 +45,7 @@ class PostgresDB implements DBInterface {
     async disconnect() {
         try {
             this.logger.logDBRequest("Start disconnecting from DB");
-            await this.client.end();
+            await this.client.release();
             this.logger.logDBRequest("Disconnection from DB successfully finished");
         }
         catch  (err ) {
