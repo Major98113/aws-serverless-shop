@@ -85,6 +85,27 @@ const serverlessConfiguration: Serverless = {
         }
       ]
     },
+    removeOrder: {
+      handler: 'handler.removeOrder',
+      memorySize: 128,
+      timeout: 10,
+      events: [
+        {
+          http: {
+            method: 'delete',
+            path: 'orders/{orderId}',
+            cors: true,
+            request: {
+              parameters: {
+                paths: {
+                  orderId: true
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
   }
 }
 

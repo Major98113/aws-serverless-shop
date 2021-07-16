@@ -58,7 +58,7 @@ export default function Orders() {
                 <Button size="small" color="primary" component={Link} to={`/admin/orders/${order.items.order_id}`}>
                   Manage
                 </Button>
-                <Button size="small" color="secondary" onClick={() => onDelete(order.id)}>
+                <Button size="small" color="secondary" onClick={() => onDelete(order.items.order_id)}>
                   Delete
                 </Button>
               </TableCell>
