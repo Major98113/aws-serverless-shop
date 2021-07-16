@@ -19,7 +19,7 @@ const serverlessConfiguration: Serverless = {
   provider: {
     name: 'aws',
     runtime: 'nodejs12.x',
-    stage: '${opt:stage}',
+    stage: 'dev',
     tracing: {
       apiGateway: true,
       lambda: true
@@ -81,6 +81,27 @@ const serverlessConfiguration: Serverless = {
             method: 'put',
             path: 'orders',
             cors: true
+          }
+        }
+      ]
+    },
+    removeOrder: {
+      handler: 'handler.removeOrder',
+      memorySize: 128,
+      timeout: 10,
+      events: [
+        {
+          http: {
+            method: 'delete',
+            path: 'orders/{orderId}',
+            cors: true,
+            request: {
+              parameters: {
+                paths: {
+                  orderId: true
+                }
+              }
+            }
           }
         }
       ]

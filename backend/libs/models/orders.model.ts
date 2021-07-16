@@ -222,6 +222,22 @@ class OrdersModel {
             throw new Error( error  );
         }
     }
+
+    async removeOrder( id: string ): Promise<void> {
+        try {
+            await Promise.all([
+                this.DB.query(`DELETE FROM order_products WHERE order_id = $1;`, [ id ]),
+                this.DB.query(`DELETE FROM order_statuses WHERE order_id = $1;`, [ id ]),
+                this.DB.query(`DELETE FROM order_user_info WHERE order_id = $1;`, [ id ])
+            ]);
+
+            await this.DB.query(`DELETE FROM orders WHERE id = $1;`, [ id ])
+        }
+        catch(error) {
+            this.logger.logError( `Method OrdersModel::removeOrder. Error: ${ error }` );
+            throw new Error( error  );
+        }
+    }
 }
 
 export { OrdersModel, OrderStatistics, CreatedOrderStatistics };

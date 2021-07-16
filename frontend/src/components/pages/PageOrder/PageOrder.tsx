@@ -119,9 +119,9 @@ export default function PageOrder() {
       axios.get(`${API_PATHS.order}/orders/${id}`)
     ];
     Promise.all(promises)
-      .then(([{data: products}, {data: order}]) => {
-        const cartItems: CartItem[] = order.items.map((i: OrderItem) => ({
-          product: products.find((p: Product) => p.id === i.productId),
+      .then(([{data: products}, {data: { order }}]) => {
+        const cartItems: CartItem[] = order.items.products.map((i: OrderItem) => ({
+          product: products.find((p: Product) => p.id === i.id),
           count: i.count
         }));
         setOrder(order);
@@ -132,7 +132,8 @@ export default function PageOrder() {
 
   if (isLoading) return <p>loading...</p>;
 
-  const statusHistory = order.statusHistory || [];
+  console.log(order.items);
+  const statusHistory = [ order.items.status ];
 
   const lastStatusItem = statusHistory[statusHistory.length - 1];
 
@@ -146,7 +147,7 @@ export default function PageOrder() {
         Status:
       </Typography>
       <Typography variant="h6" color="primary">
-        {lastStatusItem?.status.toUpperCase()}
+        {lastStatusItem.toUpperCase()}
       </Typography>
       <Typography variant="h6">
         Change status:
@@ -174,9 +175,9 @@ export default function PageOrder() {
             {statusHistory.map((statusHistoryItem: any) => (
               <TableRow key={order.id}>
                 <TableCell component="th" scope="row">
-                  {statusHistoryItem.status.toUpperCase()}
+                  {statusHistoryItem.toUpperCase()}
                 </TableCell>
-                <TableCell align="right">{(new Date(statusHistoryItem.timestamp)).toString()}</TableCell>
+                <TableCell align="right">{(new Date(order.items.created_at)).toString()}</TableCell>
                 <TableCell align="right">{statusHistoryItem.comment}</TableCell>
               </TableRow>
             ))}
