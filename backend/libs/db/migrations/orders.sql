@@ -16,3 +16,5 @@ insert into orders ( id, status ) values
     ( '5c4dfa28-34bf-491c-9baa-a8892a1534ae', 'confirmed' ),
     ( '293a974d-2f54-4151-9950-a4054949cb08', 'open' ),
     ( '5fb0f4fc-e802-4c40-968a-05641c53cdf9', 'completed' );
+
+--ALTER TABLE orders DROP COLUMN status;
